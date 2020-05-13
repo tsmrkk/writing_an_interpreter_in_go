@@ -1,4 +1,4 @@
-# Day2
+# Day 2
 ## 1.1 Lexical Analysis
 <img src="https://github.com/tsmrkk/writing_an_interpreter_in_go/blob/master/images/day2/1.png">
 

@@ -1,4 +1,4 @@
-# Day1
+# Day 1
 ## Interpreter
 Interpreters take source code and evaluate it without producing some visible, intermediate result that can later be executed. That's in contrast to compilers, which take source code and produce output in another language that the underlying system can understand.
 
