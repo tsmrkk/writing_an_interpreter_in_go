@@ -51,6 +51,7 @@ let result = add(five, ten);
 ### Token data structure
 
 ```
+// token/token.go
 package token
 type TokenType string
 type Token struct {
@@ -62,6 +63,7 @@ type Token struct {
 ### Token Types
 
 ```
+// token/token.go
 const (
   ILLEGAL = "ILLEGAL"
   EOF = "EOF"
