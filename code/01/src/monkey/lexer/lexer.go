@@ -128,3 +128,12 @@ func (l *Lexer) readIdentifier() string {
 func isLetter(ch byte) bool {
 	return 'a' <= ch && ch <= 'z' || 'A' <= ch && ch <= 'Z' || ch == '_'
 }
+
+//really similar to readChar(), except that it doesn't increment l.position and l.readPosition
+func (l *Lexer) peekChar() byte {
+	if l.readPosition >= len(l.input) {
+		return 0
+	} else {
+		return l.input[l.readPosition]
+	}
+}
