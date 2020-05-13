@@ -2,10 +2,12 @@ package lexer
 
 import "monkey/token"
 
+//ch is not a channel
+//position and readPosition are used for peeking
 type Lexer struct {
-	input        string //current position in input (points to current char)
-	position     int    // current reading position in input (after current char)
-	readPosition int    // current char under examination
+	input        string // current position in input (points to current char)
+	position     int    // always points to the position where we last read
+	readPosition int    // always points to the "next" character in the input
 	ch           byte
 }
 
@@ -16,7 +18,9 @@ func New(input string) *Lexer {
 }
 
 func (l *Lexer) readChar() {
+	// checks whether the input has reached to the end end of input
 	if l.readPosition >= len(l.input) {
+		// signifies "haven'read anything yet" or EOF
 		l.ch = 0
 	} else {
 		l.ch = l.input[l.readPosition]
@@ -75,6 +79,7 @@ func (l *Lexer) NextToken() token.Token {
 		tok.Literal = ""
 		tok.Type = token.EOF
 	default:
+		//TODO need comment
 		if isLetter(l.ch) {
 			tok.Literal = l.readIdentifier()
 			tok.Type = token.LookupIdent(tok.Literal)

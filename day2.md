@@ -31,6 +31,9 @@ Example: Output from Lexer
 ]
 ```
 
+<!--
+TODO Dig down for more information. Add more sentences
+-->
 What constitutes  a token varies between different lexer implementations. Some lexers, parse "5" to an integer in the parsing stage, while other lexers does not do that when constructing tokens
 
 ## 1.2 Defining Our Tokens
