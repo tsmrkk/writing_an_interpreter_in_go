@@ -15,3 +15,6 @@ In production, it is better to attach filenames and line numbers to tokens to tr
 - The reason for these two "poiters" pointing into input string is that it will be necessary to be able to "peek" further into the input to look after the current character to see what comes up next
 - `readPosition` always points to the "next" character in the input
 - `position` points to the character in the input that coresspond to the ch byte
+
+## 1.4
+In this section support for `==`, `!`, `!=`, `-`, `/`, `*`, `<`, `>`, `true`, `false`, `if`, `else`, `return` will be added
