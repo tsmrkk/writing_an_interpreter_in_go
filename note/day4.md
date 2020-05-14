@@ -71,4 +71,4 @@ let x = 5;
 
 The code above could be represented by an AST just like this
 
-<img src="https:">
+<img src="https://github.com/tsmrkk/writing_an_interpreter_in_go/blob/master/images/day4/1.png">
