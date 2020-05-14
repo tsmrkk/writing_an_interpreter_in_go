@@ -1,4 +1,4 @@
-|English|Japanese|
+|English|日本語|
 |---|---|
 |dig down|掘り下げる|
 |seldom|滅多に無い|

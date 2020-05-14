@@ -14,7 +14,7 @@ Parsers are exceptionally well suited to being automatically generated. So, it i
 ### Context-Free Grammar
 A CFG is a aset of rules that describe how to form correct sentences in a language. Common notationl formats of CFGs are the BNF or the EBNF. EBNF stands for(Extended BNF).
 
-## 2.3 Writing a parser for the monkey programming language
+## 2.3 Writing a parser for the Monkey programming language
 There are two main strategies to parse a programming language:
 
 - top-down parsing
