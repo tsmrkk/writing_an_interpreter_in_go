@@ -1,5 +1,5 @@
 # Day 3
-## 1.3
+## 1.3 The lexer
 Goal of this section is to wirite my own lexer
 
 - source code as input
@@ -16,8 +16,8 @@ In production, it is better to attach filenames and line numbers to tokens to tr
 - `readPosition` always points to the "next" character in the input
 - `position` points to the character in the input that coresspond to the ch byte
 
-## 1.4
+## 1.4 Extending our token set and lexer
 In this section support for `==`, `!`, `!=`, `-`, `/`, `*`, `<`, `>`, `true`, `false`, `if`, `else`, `return` will be added
 
-## 1.5
+## 1.5 Start of a repl
 REPL stands for "Read Eval Print Loop". Sometimes the REPL is called "console", sometimes "interactive mode". REPL reads input, sends it to the interpreter for evaluation, prints the result(output) of the interpreter and starts again. Read, Eval, Print, Loop
