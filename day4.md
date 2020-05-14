@@ -23,3 +23,52 @@ There are two main strategies to parse a programming language:
 In this section, we will write a recursive descent parser. It's a "top-down operator precedence" parser
 
 The difference between top-down and bottom-up parsers is that the former starts with constructing root node of the AST and then descends while the latter does it the other way around.
+
+## 2.4 Parser's first steps: parsing let statement
+"Parse let statements correctly" means that the parser produces an AST that accurately represents the information contained in the original let statement.
+
+example code
+
+```
+let x = 10;
+lex y = 15;
+
+let add = fn(a, b) {
+  return a + b;
+};
+```
+
+In the example above, there are three statements, three variable bindings - let statements - of the following form:
+
+```
+let <identifier> = <expression>;
+```
+
+identfiers are:
+- `x`
+- `y`
+- `add`
+
+expressions are:
+- `10`
+- `15`
+- `function`
+
+### The difference between statements and expressions
+Expressions produce values, statements don't.
+
+- `let x = 5` doesn't produce a value, whereas `5` does(the value it produces is 5)
+- `return 5;` statements doesn'produce a value, but `add(5, 5)` does
+- A lot of things in Monkey are expressions including function literals
+<!--
+TODO unclear points
+-->
+- identifiers in other parts of a Monkey program do produce value, for example, `let x = valueProducingIdentifer;`
+
+```
+let x = 5;
+```
+
+The code above could be represented by an AST just like this
+
+<img src="https:">
