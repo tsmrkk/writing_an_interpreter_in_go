@@ -1,6 +1,6 @@
 # Day 2
 ## 1.1 Lexical Analysis
-<img src="https://github.com/tsmrkk/writing_an_interpreter_in_go/blob/master/images/day2/1.png">
+<img src="https://github.com/tsmrkk/writing_an_interpreter_in_go/blob/master/day2/images/1.png">
 
 Lexer: Does lexical analysis. It is also called tokernizer or scanner
 
