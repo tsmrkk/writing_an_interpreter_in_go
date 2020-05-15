@@ -18,3 +18,5 @@
 |grunt work|つまらない仕事|
 |sparse|乏しい、貧弱な|
 |cop-out|手を引く|
+|infix|接中辞|
+|infix|接頭辞|
