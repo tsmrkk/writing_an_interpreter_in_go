@@ -21,6 +21,17 @@ type Expression interface {
 	expressionNode()
 }
 
+type ReturnStatement struct {
+	Token       token.Token //the 'return' token
+	ReturnValue Expression
+}
+
+func (rs *ReturnStatement) statementNode() {}
+
+func (rs *ReturnStatement) TokenLiteral() string {
+	return rs.Token.Literal
+}
+
 // going to be the root node of every AST that the parser produces
 type Program struct {
 	Statements []Statement
@@ -46,6 +57,11 @@ func (ls *LetStatement) TokenLiteral() string {
 }
 
 type Identifier struct {
-	Token toke.Token //the token.IDENT token
+	Token token.Token //the token.IDENT token
 	Value string
+}
+
+func (i *Identifier) expressionNode() {}
+func (i *Identifier) TokenLiteral() string {
+	return i.Token.Literal
 }
