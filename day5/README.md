@@ -6,11 +6,3 @@ They act like the two "pointers" that the lexer we've made has: `position` and `
 
 ### ParseProgram
 Construct the root node of the AST, an `*ast.Program`. It then iterates over every token in the input until it encounters an `token.EOF` token. It does this by repeatedly calling `nextToken`. which advances both `p.curToken` and `p.peekToken`
-
-## 2.5 Parsing return statements
-
-```
-return 5;
-return 10;
-return add(15);
-```
