@@ -19,4 +19,6 @@
 |sparse|乏しい、貧弱な|
 |cop-out|手を引く|
 |infix|接中辞|
-|infix|接頭辞|
+|prefix|接頭辞|
+|expression|式|
+|statement|文|

@@ -1,6 +1,5 @@
 # Day 5
 ## 2.4 Parser's first steps: parsing let statements
-
 ### peekToken and curToken
 They act like the two "pointers" that the lexer we've made has: `position` and `peekPosition`.
 
