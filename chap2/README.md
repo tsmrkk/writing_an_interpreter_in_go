@@ -1,4 +1,4 @@
-# Day 4
+# Chap 2
 ## 2.1 Parsers
 Parsers take source code as input and produce a data structure which represents the source code. Inputs to parser are the tokens.
 
@@ -54,6 +54,12 @@ expressions are:
 - `15`
 - `function`
 
+### peekToken and curToken
+They act like the two "pointers" that the lexer we've made has: `position` and `peekPosition`.
+
+### ParseProgram
+Construct the root node of the AST, an `*ast.Program`. It then iterates over every token in the input until it encounters an `token.EOF` token. It does this by repeatedly calling `nextToken`. which advances both `p.curToken` and `p.peekToken`
+
 ### The difference between statements and expressions
 Expressions produce values, statements don't.
 
@@ -71,4 +77,42 @@ let x = 5;
 
 The code above could be represented by an AST just like this
 
-<img src="https://github.com/tsmrkk/writing_an_interpreter_in_go/blob/master/day4/images/1.png">
+<img src="./images/1.png">
+
+式は値を生成し、変数に代入可能なものを指す. 例として以下のようなものがあげられる
+- `42`のようなリテラル(ソースコード内に直接値を表記したものを指す)
+- `foo`といった変数
+- `hoge()`といった関数呼び出し
+
+文は処理する1ステップを指す. 例としてはif文やfor文. 文の処理の一部として式を含むことがある. 以下の例では、isTrueという式が文の中に出てきている
+
+```
+const isTrue = true;
+if (isTrue) {
+}
+```
+
+if文は式ではなく、文であるため代入ができない
+
+```
+const ff = if (true) {...}
+```
+
+jsにはfunction式とfunction文がある
+
+```
+function learn() {
+  ...
+}
+
+const a = function() {
+  ...
+};
+
+
+```
+## 2.6 Parsing expressions
+Everything besides `let` and `return` statements is an expression
+
+## 参考・引用
+- [JavaScript Primer 文と式](https://jsprimer.net/basic/statement-expression/)
