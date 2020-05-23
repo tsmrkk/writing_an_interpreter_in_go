@@ -20,13 +20,13 @@ Some interpreters compile input into an internal representation called bytecode.
 ## JIT interpreters
 JIT interpreters compile the input just-in-time into native machine code that which gets then executed.
 
-## tree-walking interpreters
+## Tree-walking interpreters
 tree-walking interpreters are interpreters that parse the source code, build an abstract syntax tree(AST) out of it and the evaluate this tree.
 
-## first class functions
+## First class functions
 Functions are just values like integers or strings in the idea of first class functions
 
-## 1.1 Lexical Analysis
+## 1.1 Lexical analysis
 <img src="./images/1.png">
 
 Lexer: Does lexical analysis. It is also called tokernizer or scanner
@@ -62,7 +62,7 @@ TODO Dig down for more information. Add more sentences
 -->
 What constitutes  a token varies between different lexer implementations. Some lexers, parse "5" to an integer in the parsing stage, while other lexers does not do that when constructing tokens
 
-## 1.2 Defining Our Tokens
+## 1.2 Defining our tokens
 
 Example input into Monkey language lexer
 
@@ -89,7 +89,7 @@ type Token struct {
 }
 ```
 
-### Token Types
+### Token types
 
 ```
 // token/token.go
@@ -117,9 +117,7 @@ const (
 //keywords
   FUNCTION = "FUNCTION"
   LET = "LET"
-
-
-    )
+)
 ```
 
 ## 1.3 The lexer
