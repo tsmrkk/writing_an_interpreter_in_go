@@ -41,7 +41,6 @@ Example: Input into Lexer
 
 ```
 "let x = 5 + 5"
-
 ```
 
 Example: Output from Lexer
@@ -121,7 +120,6 @@ const (
 
 
     )
-
 ```
 
 ## 1.3 The lexer
