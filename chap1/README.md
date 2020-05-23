@@ -2,11 +2,23 @@
 ## Interpreter
 Interpreters take source code and evaluate it without producing some visible, intermediate result that can later be executed. That's in contrast to compilers, which take source code and produce output in another language that the underlying system can understand.
 
+インタープリタとはおよそいずれかの動作をするプログラムである。
+
+- ソースコードを直接解釈し実行する
+- ソースコードを中間表現に、最初に全て変換して、あるいは逐次変換(JIT interpreters)しながら、解釈し、実行する
+- コンパイラによって生成された中間表現を解釈、実行する
+
+## Difference between interpreters and compilers
+コンパイラは中間表現があって、システムによって実行可能な中間表現を生成する。また、コンパイラはインタープリタとは異なり、実行は伴わず、対象となる言語を他の言語(or 表現)に変換だけを行う。
+
+## Assembler
+Assemlyから機械語に変換するようなプログラム。
+
 ## Bytecode
-Some interpreters compile input into an internal representation called bytecode
+Some interpreters compile input into an internal representation called bytecode.
 
 ## JIT interpreters
-JIT interpreters compile the input just-in-time into native machine code that which gets then executed
+JIT interpreters compile the input just-in-time into native machine code that which gets then executed.
 
 ## tree-walking interpreters
 tree-walking interpreters are interpreters that parse the source code, build an abstract syntax tree(AST) out of it and the evaluate this tree.
