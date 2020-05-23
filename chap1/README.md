@@ -57,7 +57,7 @@ Example: Output from Lexer
 ]
 ```
 
-What constitutes  a token varies between different lexer implementations. Some lexers, parse "5" to an integer in the parsing stage, while other lexers does not do that when constructing tokens. Tokenを生成するときに、lexerによっては、5をintegerとしてparseする。一方Tokenを生成するときに、5をintegerとしてparseしないものもある
+What constitutes  a token varies between different lexer implementations. Some lexers, parse "5" to an integer in the parsing stage, while other lexers does not do that when constructing tokens. Tokenを生成するときに、lexerによっては、"5"をintegerとしてparseする。一方Tokenを生成するときに、"5"をintegerとしてparseしないものもある
 
 ## 1.2 Defining our tokens
 Example input into Monkey language lexer
@@ -93,15 +93,16 @@ const (
   ILLEGAL = "ILLEGAL"
   EOF = "EOF"
 
-//identifiers + literals
+// identfier = 識別子, literal = 数字や文字列を記述した定数
+// identifiers & literals
   IDENT = "IDENT" // add, foobar, x, y,...
   INT = "INT" //123456
 
-//operators
+// operators
   ASSIGN = "="
   PLUS = "+"
 
-//delimiters
+// delimiters
   COMMA = ","
   SEMICOLON = ";"
 
@@ -110,7 +111,7 @@ const (
   LBRACE = "{"
   RBRACE = "}"
 
-//keywords
+// keywords
   FUNCTION = "FUNCTION"
   LET = "LET"
 )

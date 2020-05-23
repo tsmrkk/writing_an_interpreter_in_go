@@ -8,25 +8,13 @@ type Lexer struct {
 	input        string // current position in input (points to current char)
 	position     int    // always points to the position where we last read
 	readPosition int    // always points to the "next" character in the input
-	ch           byte
+	ch           byte   // current character
 }
 
 func New(input string) *Lexer {
 	l := &Lexer{input: input}
 	l.readChar()
 	return l
-}
-
-func (l *Lexer) readChar() {
-	// checks whether the input has reached to the end end of input
-	if l.readPosition >= len(l.input) {
-		// signifies "haven'read anything yet" or EOF
-		l.ch = 0
-	} else {
-		l.ch = l.input[l.readPosition]
-	}
-	l.position = l.readPosition
-	l.readPosition += 1
 }
 
 func (l *Lexer) NextToken() token.Token {
@@ -121,8 +109,10 @@ func isDigit(ch byte) bool {
 }
 
 // extract strings like "return", "if", "fn" and etc and returns
+// advances lexer's position until it encounters a non-letter-character
 func (l *Lexer) readIdentifier() string {
 	position := l.position
+	// l.chが存在する限りループする。空白が来たりする場合に、ループから抜ける
 	for isLetter(l.ch) {
 		l.readChar()
 	}
@@ -134,7 +124,20 @@ func isLetter(ch byte) bool {
 	return 'a' <= ch && ch <= 'z' || 'A' <= ch && ch <= 'Z' || ch == '_'
 }
 
+func (l *Lexer) readChar() {
+	// checks whether the input has reached to the end end of input
+	if l.readPosition >= len(l.input) {
+		// signifies "haven'read anything yet" or EOF
+		l.ch = 0
+	} else {
+		l.ch = l.input[l.readPosition]
+	}
+	l.position = l.readPosition
+	l.readPosition++
+}
+
 // really similar to readChar(), except that it doesn't increment l.position and l.readPosition
+// != とか == とかの判別に使う
 func (l *Lexer) peekChar() byte {
 	if l.readPosition >= len(l.input) {
 		return 0
