@@ -7,12 +7,12 @@ Although each implementations of AST are all pretty similar, there is not one tr
 
 ## 2.2 Why not a parser generator?
 ### Parser generator
-Parser genrerators are tools that, when fed with a formal description of a language, produce parser as their output. The output is code that can then be compiled/interprede and itself fed with source code as input to produce a syntax tree. The majority of them use a context-free grammar as their input.
+Parser genrerators are tools that, when fed with a formal description of a language, produce parser as their output. The output is code that can then be compiled/interpreted and itself fed with source code as input to produce a syntax tree. The majority of them use a context-free grammar as their input.
 
 Parsers are exceptionally well suited to being automatically generated. So, it is recommended to use parser generator for production-environment, where correctness and robustness are priorities.
 
 ### Context-Free Grammar
-A CFG is a aset of rules that describe how to form correct sentences in a language. Common notationl formats of CFGs are the BNF or the EBNF. EBNF stands for(Extended BNF).
+A CFG is a set of rules that describes how to form correct sentences in a language. Common notational formats of CFGs are the BNF or the EBNF. EBNF stands for(Extended BNF).
 
 ## 2.3 Writing a parser for the Monkey programming language
 There are two main strategies to parse a programming language:
@@ -55,15 +55,15 @@ expressions are:
 - `function`
 
 ### peekToken and curToken
-They act like the two "pointers" that the lexer we've made has: `position` and `peekPosition`.
+They act like the two "pointers" that the lexer we've made has: `position` and `readPosition`.
 
 ### ParseProgram
-Construct the root node of the AST, an `*ast.Program`. It then iterates over every token in the input until it encounters an `token.EOF` token. It does this by repeatedly calling `nextToken`. which advances both `p.curToken` and `p.peekToken`
+Constructs the root node of the AST, an `*ast.Program`. It then iterates over every token in the input until it encounters an `token.EOF` token. It does this by repeatedly calling `nextToken`. which advances both `p.curToken` and `p.peekToken`
 
 ### The difference between statements and expressions
 Expressions produce values, statements don't.
 
-- `let x = 5` doesn't produce a value, whereas `5` does(the value it produces is 5)
+- `let x = 5;` doesn't produce a value, whereas `5` does(the value it produces is 5)
 - `return 5;` statements doesn'produce a value, but `add(5, 5)` does
 - A lot of things in Monkey are expressions including function literals
 <!--
