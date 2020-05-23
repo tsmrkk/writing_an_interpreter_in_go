@@ -21,21 +21,21 @@ Some interpreters compile input into an internal representation called bytecode.
 JIT interpreters compile the input just-in-time into native machine code that which gets then executed.
 
 ## Tree-walking interpreters
-tree-walking interpreters are interpreters that parse the source code, build an abstract syntax tree(AST) out of it and the evaluate this tree.
+Tree-walking interpreters are interpreters that parse the source code, build an abstract syntax tree(AST) out of it and the evaluate this tree.
 
 ## First class functions
-Functions are just values like integers or strings in the idea of first class functions
+Functions are just values like integers or strings in the idea of first class functions.
 
 ## 1.1 Lexical analysis
 <img src="./images/1.png">
 
-Lexer: Does lexical analysis. It is also called tokernizer or scanner
+Lexer: Does lexical analysis. It is also called tokernizer or scanner.
 
 Lexical Analysis: The first transfomation, from source code to tokens. This process is also called "lexing".
 
-Tokens: Small, easily categorized data structure that are then fed to parser
+Tokens: Small, easily categorized data structure that are then fed to parser. ソースコード上の文字列をそれ以上分けることのできない最小単位に分割したものを指す。
 
-Parser: Does the second transfomation and turns the tokens in "Abstract Syntax Tree"
+Parser: Does the second transfomation and turns the tokens in "Abstract Syntax Tree".
 
 Example: Input into Lexer
 
@@ -57,13 +57,9 @@ Example: Output from Lexer
 ]
 ```
 
-<!--
-TODO Dig down for more information. Add more sentences
--->
-What constitutes  a token varies between different lexer implementations. Some lexers, parse "5" to an integer in the parsing stage, while other lexers does not do that when constructing tokens
+What constitutes  a token varies between different lexer implementations. Some lexers, parse "5" to an integer in the parsing stage, while other lexers does not do that when constructing tokens. Tokenを生成するときに、lexerによっては、5をintegerとしてparseする。一方Tokenを生成するときに、5をintegerとしてparseしないものもある
 
 ## 1.2 Defining our tokens
-
 Example input into Monkey language lexer
 
 ```
@@ -121,7 +117,7 @@ const (
 ```
 
 ## 1.3 The lexer
-Goal of this section is to wirite my own lexer
+Goal of this section is to wirite our own lexer.
 
 - source code as input
 - output the tokens that represent the source code
