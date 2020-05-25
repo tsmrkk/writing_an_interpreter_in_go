@@ -55,10 +55,10 @@ expressions are:
 - `function`
 
 ### peekToken and curToken
-They act like the two "pointers" that the lexer we've made has: `position` and `readPosition`.
+They act like the two "pointers" that the lexer we've made has: `position` and `readPosition`. `readPosition`はもうちょっと分かりやすい名前にしたい。`peekToken`と合わせて、`peekPosition`みたいな名前にしたい。また、`position`も`curPosition`の方が分かりやすい気がする
 
 ### ParseProgram
-Constructs the root node of the AST, an `*ast.Program`. It then iterates over every token in the input until it encounters an `token.EOF` token. It does this by repeatedly calling `nextToken`. which advances both `p.curToken` and `p.peekToken`
+Constructs the root node of the AST, an `*ast.Program`. It then iterates over every token in the input until it encounters an `token.EOF` token. It does this by repeatedly calling `nextToken`, which advances both `p.curToken` and `p.peekToken`
 
 ### The difference between statements and expressions
 Expressions produce values, statements don't.

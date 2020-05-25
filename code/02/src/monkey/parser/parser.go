@@ -60,6 +60,7 @@ func (p *Parser) ParseProgram() *ast.Program {
 	return program
 }
 
+// curTokenのタイプがreturnかlet以外だったらnilを返す
 func (p *Parser) parseStatement() ast.Statement {
 	switch p.curToken.Type {
 	case token.LET:
@@ -74,17 +75,24 @@ func (p *Parser) parseStatement() ast.Statement {
 func (p *Parser) parseLetStatement() *ast.LetStatement {
 	stmt := &ast.LetStatement{Token: p.curToken}
 
+	// peekTokenした結果がIDENT(識別子(例えば変数名), Identifier)じゃなかったらnilを返す
+	// IDENTだった場合は、expectPeekメソッドの中でadvances both curToken and peekTokenされる
+	// MEMO expectPeekメソッドの副作用が嫌(advanceをさせるのをこのメソッド内でやりたくない)
+	// MEMO expectPeekメソッドはboolを返すだけの方が読みやすい
 	if !p.expectPeek(token.IDENT) {
 		return nil
 	}
 
+	// 変数名をstmt.Name(*ast.Identifier)に入れている
 	stmt.Name = &ast.Identifier{Token: p.curToken, Value: p.curToken.Literal}
 
+	// peekTokenした結果がASSIGN(=)じゃなかったらnilを返す
 	if !p.expectPeek(token.ASSIGN) {
 		return nil
 	}
 
-	//TODO we're skipping the expressions until we encounter a semicolon
+	// TODO we're skipping the expressions until we encounter a semicolon
+	// 値は現状は一旦無視している
 	for !p.curTokenIs(token.SEMICOLON) {
 		p.nextToken()
 	}
