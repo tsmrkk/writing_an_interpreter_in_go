@@ -106,6 +106,7 @@ func (p *Parser) parseReturnStatement() *ast.ReturnStatement {
 	p.nextToken()
 
 	// TODO we're skipping the expressions until we encounter a semicolon
+	// TODO とりあえずreturnする値は一旦無視している
 
 	for !p.curTokenIs(token.SEMICOLON) {
 		p.nextToken()

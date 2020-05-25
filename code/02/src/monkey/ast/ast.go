@@ -51,9 +51,12 @@ type Program struct {
 	Statements []Statement
 }
 
+// for printing AST nodes for debugging and to compare them with other AST nodes
+// really handy and useful in writing tests
 func (p *Program) String() string {
 	var out bytes.Buffer
 	for _, s := range p.Statements {
+		// appends s.String to out(buffer)
 		out.WriteString(s.String())
 	}
 	return out.String()
