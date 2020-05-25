@@ -17,6 +17,7 @@ func TestString(t *testing.T) {
 				},
 				// 変数の値(右辺)
 				Value: &Identifier{
+					// 変数の値がstringの場合は、IDENTになるっぽい?(INTはtokenTypeが存在するけど)
 					Token: token.Token{Type: token.IDENT, Literal: "anotherVar"},
 					Value: "anotherVar",
 				},
