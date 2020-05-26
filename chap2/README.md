@@ -3,7 +3,7 @@
 Parsers take source code as input and produce a data structure which represents the source code. Inputs to parser are the tokens.
 
 ### memo
-Although each implementations of AST are all pretty similar, there is not one true, universal AST format that's used by every parser
+Although each implementations of AST are all pretty similar, there is not one true, universal AST format that's used by every parser.
 
 ## 2.2 Why not a parser generator?
 ### Parser generator
@@ -20,7 +20,7 @@ There are two main strategies to parse a programming language:
 - top-down parsing
 - bottom-up parsing
 
-In this section, we will write a recursive descent parser. It's a "top-down operator precedence" parser
+In this section, we will write a recursive descent parser. It's a "top-down operator precedence" parser.
 
 The difference between top-down and bottom-up parsers is that the former starts with constructing root node of the AST and then descends while the latter does it the other way around.
 
@@ -55,10 +55,10 @@ expressions are:
 - `function`
 
 ### peekToken and curToken
-They act like the two "pointers" that the lexer we've made has: `position` and `readPosition`. `readPosition`はもうちょっと分かりやすい名前にしたい。`peekToken`と合わせて、`peekPosition`みたいな名前にしたい。また、`position`も`curPosition`の方が分かりやすい気がする
+They act like the two "pointers" that the lexer we've made has: `position` and `readPosition`. `readPosition`はもうちょっと分かりやすい名前にしたい。`peekToken`と合わせて、`peekPosition`みたいな名前にしたい。また、`position`も`curPosition`の方が分かりやすい気がする。
 
 ### ParseProgram
-Constructs the root node of the AST, an `*ast.Program`. It then iterates over every token in the input until it encounters an `token.EOF` token. It does this by repeatedly calling `nextToken`, which advances both `p.curToken` and `p.peekToken`
+Constructs the root node of the AST, an `*ast.Program`. It then iterates over every token in the input until it encounters an `token.EOF` token. It does this by repeatedly calling `nextToken`, which advances both `p.curToken` and `p.peekToken`.
 
 ### The difference between statements and expressions
 Expressions produce values, statements don't.
@@ -66,9 +66,6 @@ Expressions produce values, statements don't.
 - `let x = 5;` doesn't produce a value, whereas `5` does(the value it produces is 5)
 - `return 5;` statements doesn'produce a value, but `add(5, 5)` does
 - A lot of things in Monkey are expressions including function literals
-<!--
-TODO unclear points
--->
 - identifiers in other parts of a Monkey program do produce value, for example, `let x = valueProducingIdentifer;`
 
 ```
@@ -79,12 +76,12 @@ The code above could be represented by an AST just like this
 
 <img src="./images/1.png">
 
-式は値を生成し、変数に代入可能なものを指す. 例として以下のようなものがあげられる
+式は値を生成し、変数に代入可能なものを指す. 例として以下のようなものがあげられる。
 - `42`のようなリテラル(ソースコード内に直接値を表記したものを指す)
 - `foo`といった変数
 - `hoge()`といった関数呼び出し
 
-文は処理する1ステップを指す. 例としてはif文やfor文. 文の処理の一部として式を含むことがある. 以下の例では、isTrueという式が文の中に出てきている
+文は処理する1ステップを指す. 例としてはif文やfor文. 文の処理の一部として式を含むことがある. 以下の例では、isTrueという式が文の中に出てきている。
 
 ```
 const isTrue = true;
@@ -172,7 +169,55 @@ program := &Program{
 ```
 
 ## 2.6 Parsing expressions
-Everything besides `let` and `return` statements is an expression
+Everything besides `let` and `return` statements is an expression.
+
+### Terminology
+A prefix operator is an operator "in front of" its operand.
+
+example
+
+```
+--5;
+```
+
+A postfix operator is an operator "after" its operand. There won't be 'postfix operators implementation in Monkey to make things simple.
+
+example
+
+```
+count++;
+```
+
+An infix operator sits between its operands.
+
+example
+
+```
+5 * 8;
+```
+
+The order of operations(operator precedence) is operator precedence description.
+
+example
+
+```
+5 + 5 * 10
+```
+
+In the above example, `*` operator has a higher precedence than `*` operator. So the calculation must start from `5 * 10`.
+
+### Adding expressions statement to AST
+It is totally legal to write the following code in Monkey. The first line is a let statment and the second line is an expression statment. To enable following code to be parsed correctly, we need to add expression statement our AST.
+
+```
+let x = 5;
+x + 10;
+```
+
+`ast.ExpressionStatement` fulfils the `ast.Statement` interface, which means that we can add it to the `Statements ` slice of `ast.Program`
+
+### Memo
+Most scripting language have expression statement.
 
 ## 参考・引用
 - [JavaScript Primer 文と式](https://jsprimer.net/basic/statement-expression/)

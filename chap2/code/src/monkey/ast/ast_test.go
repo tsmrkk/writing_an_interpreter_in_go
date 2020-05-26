@@ -16,6 +16,7 @@ func TestString(t *testing.T) {
 					Value: "myVar",
 				},
 				// 変数の値(右辺)
+				// Node interface(厳密にはExpressionの中のNode interface)にIdentifierへのポインタを入れている
 				Value: &Identifier{
 					// 変数の値がstringの場合は、IDENTになるっぽい?(INTはtokenTypeが存在するけど)
 					Token: token.Token{Type: token.IDENT, Literal: "anotherVar"},

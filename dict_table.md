@@ -22,3 +22,6 @@
 |prefix|接頭辞|
 |expression|式|
 |statement|文|
+|notch|刻み目、階級|
+|leverage|投資|
+|deceive|嘘を付く|
