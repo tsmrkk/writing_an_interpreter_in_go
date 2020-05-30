@@ -7,6 +7,10 @@ import (
 	"testing"
 )
 
+// TODO ここの理解が浅い
+// TODO ast.goの中身(Stringメソッド)見ながら、tokenとcurToken, peekTokenの位置を書き出しながら考えたほうがいい
+// TODO 図に書き出しながらやったほうがいいかも
+
 func TestOperatorPrecedenceParsing(t *testing.T) {
 	tests := []struct {
 		input    string
