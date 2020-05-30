@@ -216,8 +216,65 @@ x + 10;
 
 `ast.ExpressionStatement` fulfils the `ast.Statement` interface, which means that we can add it to the `Statements ` slice of `ast.Program`
 
-### Memo
-Most scripting language have expression statement.
+### Expression statement(式文)
+- 基本的には文が書けるところには式を書くことができる。文となった式のことを式文と呼ぶ
+- Most scripting language have expression statement.
+
+```
+let x = 5;
+x + 10;
+```
+
+The first line is a let statement, the second line is an expression statement.
+
+### Implementing the Pratt parser
+- main idea of Pratt parser is the association of parsing functions with token types
+- whenever a token type is encountered, the parsing functions are called to parse the appropriate expression and return an AST node that represents it
+
+To setup the associations, we define two types of functions, prefix parsing functions and an infix parsing functions
+
+### Prefix operators
+There are two prefix operators in Monkey:
+- `-`
+- `!`
+
+code example
+
+```
+-5;
+!foobar;
+5 + -10;
+```
+
+the structure of the above code's usage is the following:
+
+```
+<prefix operator> <expression>;
+```
+
+Any expression can follow a prefix operator as operand and the following code is valid
+
+```
+!isGreaterThanZero(2);
+5 + -add(5, 5)
+```
+
+### Infix operators
+
+```
+5 + 5;
+5 - 5;
+5 * 5;
+5 / 5;
+5 > 5;
+5 < 5;
+5 == 5;
+5 != 5;
+```
+
+```
+<expression> <infix operator> <expression>
+```
 
 ## 参考・引用
 - [JavaScript Primer 文と式](https://jsprimer.net/basic/statement-expression/)

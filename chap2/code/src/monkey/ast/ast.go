@@ -87,6 +87,55 @@ func (rs *ReturnStatement) String() string {
 	return out.String()
 }
 
+type InfixExpression struct {
+	Token    token.Token
+	Left     Expression
+	Operator string
+	Right    Expression
+}
+
+func (oe *InfixExpression) expressionNode()      {}
+func (oe *InfixExpression) TokenLiteral() string { return oe.Token.Literal }
+func (oe *InfixExpression) String() string {
+	var out bytes.Buffer
+
+	out.WriteString("(")
+	out.WriteString(oe.Left.String())
+	out.WriteString(" " + oe.Operator + " ")
+	out.WriteString(oe.Right.String())
+	out.WriteString(")")
+
+	return out.String()
+}
+
+type PrefixExpression struct {
+	Token    token.Token
+	Operator string     // contains "-" or "!"
+	Right    Expression // contains the xpression to the right of the operator
+}
+
+func (pe *PrefixExpression) expressionNode()      {}
+func (pe *PrefixExpression) TokenLiteral() string { return pe.Token.Literal }
+func (pe *PrefixExpression) String() string {
+	var out bytes.Buffer
+
+	out.WriteString("(")
+	out.WriteString(pe.Operator)
+	out.WriteString(pe.Right.String())
+	out.WriteString(")")
+
+	return out.String()
+}
+
+type IntegerLiteral struct {
+	Token token.Token
+	Value int64
+}
+
+func (il *IntegerLiteral) expressionNode()      {}
+func (il *IntegerLiteral) TokenLiteral() string { return il.Token.Literal }
+func (il *IntegerLiteral) String() string       { return il.Token.Literal }
+
 type Expression interface {
 	Node
 	// dummy method
@@ -94,7 +143,8 @@ type Expression interface {
 	expressionNode()
 }
 
-// can be added to the Statements slice of ast.Program
+// fulfills the ast.Statement interface
+// we can add it to the Statements slice of ast.Program
 type ExpressionStatement struct {
 	Token      token.Token //the first token of the expression
 	Expression Expression
