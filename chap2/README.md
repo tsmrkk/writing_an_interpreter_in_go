@@ -318,5 +318,19 @@ Any expression can follow a prefix operator as operand and the following code is
 `;`にぶち当たるので、ここでnodeの生成の処理が終わる。
 <img src="./images/8.png">
 
+### Precedenceについて
+The goal is to have expressions involving operators with a higher precedence to be deeper in the tree than expressions with lower precedence operators.
+
+### Right-binding power
+The higher it is, the more tokens/operators/operands to the right of the current expression(the future peek tokens) can we "bind" to it, or to think "suck in".
+
+- 絶対にprecedenceが高いものは右の方にある
+- 右に留まる力ってイメージ
+
+### Left-binding power
+Left-binding power of the next operator come from call to `peekPrecedence`. The value this call returns stadns for the left-binding power of the next operator, of `p.peekToken`
+
+左に留まる力ってイメージ
+
 ## 参考・引用
 - [JavaScript Primer 文と式](https://jsprimer.net/basic/statement-expression/)

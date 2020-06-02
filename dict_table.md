@@ -25,3 +25,4 @@
 |notch|刻み目、階級|
 |leverage|投資|
 |deceive|嘘を付く|
+|suck in|吸い上げる|
