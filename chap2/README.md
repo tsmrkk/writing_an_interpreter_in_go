@@ -277,12 +277,45 @@ Any expression can follow a prefix operator as operand and the following code is
 ```
 
 ## 2.7 How Pratt parsing works
+
+```
+1 + 2 + 3;
+```
+
+上のコードをパースして、以下のコードを生成することを期待して、考える。
+
+```
+((1 + 2) + 3);
+```
+
+まず、パースして上のようなコードを生成するには、ASTは2つの`*ast.InfixExpression` nodesを含む必要がある。
+以下の図のようなASTを生成することをゴールとする。
+
 <img src="./images/2.png">
+
+どのように、このようなASTを生成するかこれから考えていく。
+
+まず始めに、`parseExpressionStatement`が呼ばれて、その中から、`parseExpression(LOWEST)`を呼ぶ。この時点で`p.curToken`と`p.peekToken`はそれぞれ`1`と`+`を指している。parseExpressionで最初に行われるのは、`p.curToken.Type`に関連した`prefixParseFn`が存在するかどうかを確認することである。この時点で`p.curToken.Type`は`token.INT`で、`prefixParseFn`である`parseIntegerLiteral`が存在する事がわかる。次に`parseIntegerLiteral`を呼び出し、そこから戻ってきた`*ast.IntegerLiteral.parseExpression`が戻り値として返され、それが`leftExp`に代入される。
+
 <img src="./images/3.png">
+
+その後のコードで、それぞれのcursorが1ずつ右にずらされ、今度は、`p.peekToken.Type`に対しての、`infixParseFn`が存在するかどうかを確認する。
+
 <img src="./images/4.png">
+
+説明略(codeを見ること)
+
 <img src="./images/5.png">
+
+1と2を子nodeとして持つ、`*ast.InfixExpression`nodeが上記のステップによって生成される。
+
 <img src="./images/6.png">
+
+最終的には以下のような`*ast.InfixExpression`nodeが生成される。
+
 <img src="./images/7.png">
+
+`;`にぶち当たるので、ここでnodeの生成の処理が終わる。
 <img src="./images/8.png">
 
 ## 参考・引用
