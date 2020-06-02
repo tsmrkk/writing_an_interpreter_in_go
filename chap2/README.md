@@ -276,5 +276,14 @@ Any expression can follow a prefix operator as operand and the following code is
 <expression> <infix operator> <expression>
 ```
 
+## 2.7 How Pratt parsing works
+<img src="./images/2.png">
+<img src="./images/3.png">
+<img src="./images/4.png">
+<img src="./images/5.png">
+<img src="./images/6.png">
+<img src="./images/7.png">
+<img src="./images/8.png">
+
 ## 参考・引用
 - [JavaScript Primer 文と式](https://jsprimer.net/basic/statement-expression/)
