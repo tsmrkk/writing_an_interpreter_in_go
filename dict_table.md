@@ -26,3 +26,7 @@
 |leverage|投資|
 |deceive|嘘を付く|
 |suck in|吸い上げる|
+|comtemplate|熟考する、じっくり考える|
+|consequence|結果、結論|
+|alternative|代わりとなるもの|
+|hook up|連結、結合、連携|
