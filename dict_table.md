@@ -30,3 +30,5 @@
 |consequence|結果、結論|
 |alternative|代わりとなるもの|
 |hook up|連結、結合、連携|
+|paren|(|
+|brace|{|
