@@ -332,5 +332,144 @@ Left-binding power of the next operator come from call to `peekPrecedence`. The 
 
 左に留まる力ってイメージ
 
+## 2.8 Extending the parser
+### Boolean literals
+In Monkey, we can use booleans in place of any other expression:
+
+```
+true;
+false;
+let fooBar = true;
+let barFoo = false;
+```
+
+### Grouped Expressions
+In Monkey, it is possible to change 演算の優先度 with`(`
+
+```
+(5 + 5) *2
+```
+
+The parentheses grouped the `5+5` expression in order to give them a higher precedence and the position them deeper in the AST
+
+We don't need to change our AST in order to parse grouped expressions properly. Parentheses work as expected by boosting the precedence of the enclosed expressions.
+
+### If expressions
+```
+if(x > y) {
+  return x;
+} else {
+  return y;
+}
+```
+
+The else is optional and can be left out like this:
+
+```
+if (x > y) {
+  return x;
+}
+```
+
+In Monkey if-else-conditions are expressions. That means that they produce a value and in the case of if expressions that's the last evaluated line.
+
+```
+let fooBar = if (x > y) { x } else { y };
+```
+
+The abstract structure
+
+```
+if (<codition>) <consequence> else <alternative>
+```
+
+**The braces(`{}`) are part of consequence and alternative**, because both are block statements.
+
+**Block statements are a series of expressions enclosed by an opening `{` and closing `}`**
+
+### Function literals
+Similar implementation(like optional else) to if expression.`fn(x, y)`, `fn()`, `fn(x+y, z)` could be parsed in Monkey language.
+
+```
+fn(x, y) {
+  return x+y;
+}
+```
+
+The abstract structure
+
+```
+fn <parameters> <block statement>
+```
+
+
+Parameters are comma-separated and surrounded by parentheses:
+
+```
+(<parameter one>, <parameter two>, <parameter trhee>, ...)
+```
+
+The list can also be empty:
+
+```
+fn() {
+  return fooBar + barFoo;
+}
+
+```
+
+**Function literals are expressions** and we can use function literals in every place where any other expression is valid
+
+```
+let myFunction = fn(x, y) { return x + y; };
+```
+
+The below code is valid
+
+```
+fn() {
+  return fn(x, y) { return x > y; };
+}
+```
+
+The below code is also valid
+
+```
+myFunc(x, y, fn(x, y) { return x > y; });
+```
+
+Looks difficult but it is not. Once we define function literals as expressions and provide a function to correctly parse them the rest works fine
+
+There are two main parts for parsing a function. One is function and body and another is parmeters
+
+Functions body → Block statement
+
+### Call expressions
+
+The abstract structure
+
+```
+<expression>(<comma separated expressions>)
+```
+
+The below codes are valid
+
+```
+add(2, 3)
+```
+
+Now think about this: the `add` in above code is an identifier. And **identifiers are expressions**. The argument 2 and 3 are expressions(integer literals are expressions) too. **The identifier `add `returns this function when it's evaluated**. That means, we could go straight to the source, **skip the identifier and replace add with a function literal just like below code**:
+
+```
+fn(x, y) { x + y;}(2, 3)
+```
+
+The code below is also valid in the Monkey language.
+
+```
+add(2 + 2, 3 * 3 * 3)
+```
+
+
 ## 参考・引用
 - [JavaScript Primer 文と式](https://jsprimer.net/basic/statement-expression/)
