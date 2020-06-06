@@ -32,3 +32,4 @@
 |hook up|連結、結合、連携|
 |paren|(|
 |brace|{|
+|on the fly|休まもなく|
