@@ -79,10 +79,13 @@ We're going to represent every value we encounter when evaluating Monkey source 
 ## Null
 - Tony Hoare(ALGOL W language creator) introduce `null ` and called this "billion dollar mistake"
 - Represent value that isn't there
-- It doesn't wrap any value. It represents the absence of any value(一応存在しているけど、何もない状態を示しているイメージ)
-
+- It doesn't wrap any value. It represents the absence of any value(一応存在はしているけど、何もない状態を示しているイメージ)
 
 ## 3.5 Evaluating expressions
+- `Eval` will take an `ast.Node` as input and return an `object.Object`
+- Node we defined in the ast package fulfills the `ast.Node` interface and can thus be passed to `eval`
+- The return value of `Eval` is what we make assertions about
+
 ## 3.6 Conditional
 ## 3.7 Return statements
 ## 3.8 Abort! Abort! There's been a mistake! Or: Error handling
