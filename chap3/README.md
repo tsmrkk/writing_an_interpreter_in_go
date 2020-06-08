@@ -64,6 +64,24 @@ function eval(astNode) {
 ```
 
 ## 3.4 Representing objects
+We first need to define what our "eval" function returns.
+
+- In some languages, they use native types of the host language to represent values in the interpreted language, not wrapped in anything
+- In some languages, values/objects are represented only as pointer
+- In some languages, native types(boolenas, integers, etc) and pointers are mixed
+
+### Why the variety of value representation
+Depends on the language design and on performance requirement
+
+### Foundation of our object system
+We're going to represent every value we encounter when evaluating Monkey source code as an `Object`, an interface of our design. Every value will be wrapped inside a struct which fulfills this `Object` interface
+
+## Null
+- Tony Hoare(ALGOL W language creator) introduce `null ` and called this "billion dollar mistake"
+- Represent value that isn't there
+- It doesn't wrap any value. It represents the absence of any value(一応存在しているけど、何もない状態を示しているイメージ)
+
+
 ## 3.5 Evaluating expressions
 ## 3.6 Conditional
 ## 3.7 Return statements
