@@ -33,3 +33,11 @@
 |paren|(|
 |brace|{|
 |on the fly|休まもなく|
+|compound data||
+|myriad|無数の|
+|negate|無効にする|
+|refresher|元気を回復させる人、飲食物|
+|digress|脱線する|
+|dilettate|素人|
+|lavish|気前の良い|
+|praise|称賛|
